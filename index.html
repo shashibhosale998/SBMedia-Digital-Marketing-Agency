@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBMedia - Digital Marketing Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            color: #fff;
+            transition: background-image 1s ease-in-out;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8) url('5jpg.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+            overflow: hidden;
+            transition: background-image 1s ease-in-out;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        header .logo, header .nav-links, header .hero {
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff5722;
+        }
+        .hero {
+            margin-top: 20px;
+            animation: slideIn 2s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .hero h1 {
+            font-size: 36px;
+            transition: opacity 1s ease-in-out;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #ff5722;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #e64a19;
+        }
+        .service-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow: hidden;
+        }
+        .card-row {
+            display: flex;
+            gap: 20px;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        .card-row:first-child {
+            animation-name: moveLeftToRight;
+        }
+        .card-row:last-child {
+            animation-name: moveRightToLeft;
+        }
+        @keyframes moveLeftToRight {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes moveRightToLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: black;
+            text-align: center;
+            flex: 0 0 auto;
+            width: 200px; /* Adjust card width */
+        }
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            background:rgba(0, 0, 0, 0.8);
+            color:red;
+            font-weight: 700;
+        }
+        .stat {
+            margin: 0 20px;
+            text-align: center;
+        }
+        .about, .contact {
+            padding: 50px;
+            text-align: center;
+        }
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .chatbot-popup {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: none;
+        }
+        .chatbot-popup.active {
+            display: block;
+        }
+        .chatbot-popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+        .chatbot-popup form {
+            margin-top: 20px;
+        }
+        .chatbot-popup input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .chatbot-popup button {
+            width: 100%;
+            padding: 10px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .contact form input::placeholder, .contact form textarea::placeholder {
+            color: #ddd;
+        }
+        .contact form button {
+            width: 100%;
+            padding: 10px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact form button:hover {
+            background: #e64a19;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        footer .footer-content div {
+            margin: 10px;
+            max-width: 300px;
+        }
+        footer .footer-content h3 {
+            margin-bottom: 10px;
+        }
+        footer .footer-content p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SBMedia</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1 id="dynamic-heading">Grow Your Business with SBMedia</h1>
+            <p>Innovative digital marketing solutions tailored for success.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </header>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card-row">
+                <div class="card">
+                    <img src="1jpg.avif" alt="SEO Optimization">
+                    <h3>SEO Optimization</h3>
+                </div>
+                <div class="card">
+                    <img src="2jpg.jpg" alt="Social Media Marketing">
+                    <h3>Social Media Marketing</h3>
+                </div>
+                <div class="card">
+                    <img src="3jpg.jpg" alt="Brand Strategy">
+                    <h3>Brand Strategy</h3>
+                </div>
+                <div class="card">
+                    <img src="4jpg.jpg" alt="Web Development">
+                    <h3>Web Development</h3>
+                </div>
+                <div class="card">
+                    <img src="1jpg.avif" alt="SEO Optimization">
+                    <h3>SEO Optimization</h3>
+                </div>
+                <div class="card">
+                    <img src="2jpg.jpg" alt="Social Media Marketing">
+                    <h3>Social Media Marketing</h3>
+                </div>
+                <div class="card">
+                    <img src="3jpg.jpg" alt="Brand Strategy">
+                    <h3>Brand Strategy</h3>
+                </div>
+                <div class="card">
+                    <img src="4jpg.jpg" alt="Web Development">
+                    <h3>Web Development</h3>
+                </div>
+            </div>
+            <div class="card-row">
+                <div class="card">
+                    <img src="1jpg.avif" alt="SEO Optimization">
+                    <h3>SEO Optimization</h3>
+                </div>
+                <div class="card">
+                    <img src="2jpg.jpg" alt="Social Media Marketing">
+                    <h3>Social Media Marketing</h3>
+                </div>
+                <div class="card">
+                    <img src="3jpg.jpg" alt="Brand Strategy">
+                    <h3>Brand Strategy</h3>
+                </div>
+                <div class="card">
+                    <img src="4jpg.jpg" alt="Web Development">
+                    <h3>Web Development</h3>
+                </div>
+                <div class="card">
+                    <img src="1jpg.avif" alt="SEO Optimization">
+                    <h3>SEO Optimization</h3>
+                </div>
+                <div class="card">
+                    <img src="2jpg.jpg" alt="Social Media Marketing">
+                    <h3>Social Media Marketing</h3>
+                </div>
+                <div class="card">
+                    <img src="3jpg.jpg" alt="Brand Strategy">
+                    <h3>Brand Strategy</h3>
+                </div>
+                <div class="card">
+                    <img src="4jpg.jpg" alt="Web Development">
+                    <h3>Web Development</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats">
+        <div class="stat">
+            <h1 id="clients">0</h1>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat">
+            <h1 id="projects">0</h1>
+            <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+            <h1 id="awards">0</h1>
+            <p>Awards Won</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <div class="chatbot">Chat with us</div>
+
+    <div class="chatbot-popup">
+        <button class="close-btn">&times;</button>
+        <p>Good evening! Good to have you with us today. 🙂</p>
+        <p>We are a full-stack Digital Marketing Agency dealing with end-to-end marketing efforts of a company.</p>
+        <p>Are you looking to avail our services?</p>
+        <form id="chatbot-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">Yes, I'm Interested</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>About SBMedia</h3>
+                <p>SBMedia is a leading digital marketing agency specializing in SEO, social media marketing, brand strategy, and web development. We help businesses grow and succeed in the digital world.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>Email: info@sbmedia.com</p>
+                <p>Phone: +123 456 7890</p>
+                <p>Address: 123 Business St, City, Country</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SBMedia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chatbot functionality
+        const chatbot = document.querySelector('.chatbot');
+        const chatbotPopup = document.querySelector('.chatbot-popup');
+        const closeBtn = document.querySelector('.close-btn');
+        const chatbotForm = document.getElementById('chatbot-form');
+
+        // Toggle chatbot popup
+        chatbot.addEventListener('click', () => {
+            chatbotPopup.classList.toggle('active');
+        });
+
+        // Close chatbot popup
+        closeBtn.addEventListener('click', () => {
+            chatbotPopup.classList.remove('active');
+        });
+
+        // Chatbot form validation
+        chatbotForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = chatbotForm.querySelector('input[type="text"]').value;
+            const email = chatbotForm.querySelector('input[type="email"]').value;
+
+            if (name && email) {
+                alert(`Thank you, ${name}! We will contact you at ${email} shortly.`);
+                chatbotForm.reset();
+                chatbotPopup.classList.remove('active');
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+
+        // Random background image functionality
+        function getRandomImage() {
+            const categories = ['digital', 'marketing', 'business', 'technology', 'social-media'];
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            return `https://source.unsplash.com/1600x900/?${randomCategory}`;
+        }
+
+        function changeBackground() {
+            const header = document.querySelector('header');
+            const body = document.body;
+            const heading = document.getElementById('dynamic-heading');
+
+            const headings = [
+                "Grow Your Business with SBMedia",
+                "Innovative Solutions for Success",
+                "Your Partner in Digital Growth",
+                "Transforming Ideas into Reality"
+            ];
+            heading.textContent = headings[Math.floor(Math.random() * headings.length)];
+        }
+
+        // Change background every 5 seconds
+        setInterval(changeBackground, 5000);
+
+        // Initialize the first background
+        changeBackground();
+    </script>
+</body>
+</html>
